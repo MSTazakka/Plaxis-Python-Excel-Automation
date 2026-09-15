@@ -35,9 +35,10 @@ plus SC7 remesh support. Post-calc review is manual in PLAXIS Output.
 ## 🚀 Quick start
 
 1. Read `INSTALL.md` once (install + smoke test).
-2. Open an `EXAMPLE *.xlsm`, fill `main` (`B2:D4`, `F2:H8`, `B12:AH33`) + PLAXIS port/password (`V5:V6`).
-3. Run SC3 (Plaxis Python) → SC4 (DXF import) → SC5 (structures) → SC6 (staging) → SC9 (launcher), then mesh + calculate in PLAXIS.
-4. Full procedure, range map, and audit checklist: `MANUAL.md` Sections D, S, P.
+2. Start the PLAXIS remote scripting server (once per PLAXIS session): Input → **Expert → Configure remote scripting server…** → port `10000` + password → **Start server** (screenshot in `MANUAL.md` C.3); mirror the same port/password into `main!V5`/`main!V6` and keep Input open.
+3. Open an `EXAMPLE *.xlsm`, fill `main` (`B2:D4`, `F2:H8`, `B12:AH33`).
+4. Run SC3 (Plaxis Python) → SC4 (DXF import) → SC5 (structures) → SC6 (staging) → SC9 (launcher), then mesh + calculate in PLAXIS.
+5. Full procedure, range map, and audit checklist: `MANUAL.md` Sections D, S, P.
 
 ## 🔍 Full audit trail
 
