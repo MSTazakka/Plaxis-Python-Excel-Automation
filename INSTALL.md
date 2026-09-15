@@ -6,7 +6,7 @@
 > first model.
 
 ```diff
-- ⛔ DO NOT rename, move, modify table headers, or add/delete columns and rows. The scripts read fixed sheet names, header text, and cell addresses — restructuring will break the chain (silent wrong output or a failed button press). Fill only the documented input cells. Copy a workbook first if you want to experiment.
+- ⛔ DO NOT rename, move, modify EXCEL table headers, or add/delete columns and rows. The scripts read fixed sheet names, header text, and cell addresses — restructuring will break the chain (silent wrong output or a failed button press). Fill only the documented input cells. Copy a workbook first if you want to experiment.
 ```
 
 ---
