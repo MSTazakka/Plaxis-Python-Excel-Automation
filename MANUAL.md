@@ -237,12 +237,27 @@ appears beside the workbook automatically.
 
 ### C.3 PLAXIS connection
 
+Nothing runs until the PLAXIS remote scripting server is on. Start it once per
+PLAXIS session, then mirror the same port and password into the workbook:
+
+1. Open PLAXIS 2D (Input).
+2. Go to **Expert → Configure remote scripting server…**.
+3. Set **Port** (default `10000`) and type an API password (shown as dots —
+   safe to screenshot).
+4. Click **Start server** and confirm it reports running (see figure below).
+5. In the workbook, open the `main` sheet and type the same port into `main!V5`
+   and the same password into `main!V6`.
+6. Keep PLAXIS Input open while you press the SC3/SC4/SC5/SC6/SC9 buttons —
+   the generated notebook connects to that running session.
+
+![PLAXIS remote scripting server — Expert menu, port + password, Start server](remote_scripting_server.png)
+
 SC3 reads the PLAXIS server settings from `main!V5` (port, e.g. `10000`) and
 `main!V6` (API password). The generated notebook's first cells call
 `new_server("localhost", port=…, password="…")`. Keep these cells consistent with
 your running PLAXIS Input session. The API password is **not** the PLAXIS licence
-— it is the remote-scripting password shown in PLAXIS *expert options* when the
-API server is started.
+— it is the remote-scripting password shown when the API server is started.
+Port/password mismatch is the single most common first-run failure.
 
 ### C.4 Before starting a model
 
