@@ -32,6 +32,14 @@ plus SC7 remesh support. Post-calc review is manual in PLAXIS Output.
 - Desktop Excel with macros enabled + xlwings VBA add-in
 - Python with `xlwings`, `pandas`, `numpy`, `ezdxf` (see `INSTALL.md`)
 
+## 📐 DXF drawing rules — read before you draw
+
+Your DXF decides whether the model builds cleanly. Two rules, no exceptions:
+
+1. **Correct layer names (`MANUAL.md` Section T).** Format is `<type>[_<number>][bracket]` — e.g. `plate_1[D-Wall 800mm]`, `anc_1[grout 300mm]`, `load_line[100kPa]`, `cut`, `fill`, `volume_profile`. Matching is case-insensitive prefix, except three exact-match layers: `pvd` (`pvd_1` is ignored), `waterboundary_head`, `waterboundary_closed`. Wrong names = silently skipped geometry.
+
+2. **Well snapped, no micro-gaps.** Draw closed polylines, snap every endpoint, no duplicate lines, no hairline gaps or slivers along shared edges. The chain only helps so far: 1 mm rounding, 10 mm axis-snap on structural lines, and a merge-equivalents cell that collapses near-duplicates — but stacked soil polygons are still separate polylines sharing an edge twice, not true shared topology. Leftover gaps change stress flow, interfaces, and mesh quality. After SC4/SC9, inspect every shared edge and the mesh around it (`MANUAL.md` H.8 checklist).
+
 ## 🚀 Quick start
 
 1. Read `INSTALL.md` once (install + smoke test).
