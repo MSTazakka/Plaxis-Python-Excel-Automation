@@ -17,7 +17,28 @@
 | Administrator rights on your PC (for steps B–D) | Installing Python and the Excel add-in needs it | Your IT department if the PC is managed |
 | This folder (`PLAXIS_PYTHON_V0.8.5-PUBLIC`) on a local drive | The workbooks, scripts, and manuals live here | Copy it somewhere simple, e.g. `C:\PlaxisPublic\` |
 
-Check: you can open one of the `v0.8.5 EXAMPLE N.xlsm` files in desktop Excel.
+> **Keep the folder structure exactly as downloaded.** The workbook buttons find
+> the `scripts/` folder by relative path — there is nothing to "install" for the
+> scripts themselves. Never move an `.xlsm` file out of the folder on its own;
+> if you do, the buttons will fail because the scripts are no longer next to it.
+>
+> ```text
+> C:\PlaxisPublic\                     ← the folder you copied
+> ├── EXAMPLE 1.xlsm … EXAMPLE 4.xlsm ← Excel front ends (stay here)
+> ├── Example * - *.dxf               ← DXF geometry (stay here)
+> ├── scripts\                        ← Python scripts (stay here, do not move)
+> │   ├── sc3_PythonPlaxis.py
+> │   ├── sc4_dxf_reader.py
+> │   ├── sc5_structural_to_ipynb.py
+> │   ├── sc6_staged_construction.py
+> │   ├── sc7_curve_points.py
+> │   ├── sc9_IPYNB_LAUNCHER.py
+> │   └── notebook_paths.py
+> ├── MANUAL.md / INSTALL.md / README.md / LICENSE
+> └── *.ipynb (appear here after you press SC3 — one per workbook)
+> ```
+
+Check: you can open one of the `EXAMPLE N.xlsm` files in desktop Excel.
 (If Excel warns about macros, click **Enable Content** — the buttons need macros.)
 
 ---
@@ -85,7 +106,7 @@ xlwings addin install
      and then always click Enable Content — either works).
    - Tick **Trust access to the VBA project object model**. Without this, the
      buttons fail.
-4. Open `v0.8.5 EXAMPLE 1.xlsm` from this folder. If a yellow security bar
+4. Open `EXAMPLE 1.xlsm` from this folder. If a yellow security bar
    appears, click **Enable Content**.
 
 Check: press `Alt + F11` in Excel — the VBA editor opens and you can see the
@@ -122,8 +143,8 @@ in `main!V6` matches. Mismatches are the single most common first-run failure
 ## F. First-run smoke test
 
 1. PLAXIS Input open with the scripting server running (Section E).
-2. Excel open with `v0.8.5 EXAMPLE 1.xlsm`, macros enabled (Section D).
-3. Press the **SC3** button. A file named `v0.8.5 EXAMPLE 1.ipynb` should appear
+2. Excel open with `EXAMPLE 1.xlsm`, macros enabled (Section D).
+3. Press the **SC3** button. A file named `EXAMPLE 1.ipynb` should appear
    next to the workbook within a few seconds.
 4. Press **Button 1 (SC4)** and select the Example 1 DXF when asked. The
    `str_2D` sheet fills with geometry and `str_2D!B4` shows a progress bar.
