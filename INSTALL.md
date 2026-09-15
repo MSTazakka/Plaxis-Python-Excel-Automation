@@ -6,7 +6,7 @@
 > first model.
 
 ```diff
-- ⛔ DO NOT rename, move, modify EXCEL table headers, or add/delete columns and rows. The scripts read fixed sheet names, header text, and cell addresses — restructuring will break the chain (silent wrong output or a failed button press). Fill only the documented input cells. Copy a workbook first if you want to experiment.
+- ⛔ DO NOT rename, move, modify headers, or add/delete columns and rows. The scripts read fixed sheet names, header text, and cell addresses — restructuring will break the chain (silent wrong output or a failed button press). Fill only the documented input cells. Copy a workbook first if you want to experiment.
 ```
 
 ---
@@ -127,20 +127,19 @@ workbook button press later, Python should launch instead of an error about
 
 ## E. PLAXIS scripting setup
 
-1. Open PLAXIS 2D (Input). Start the remote scripting server: in PLAXIS go to
-   **Expert → Configure remote scripting server** (exact menu wording depends
-   on version), set a port (default `10000`) and a password, and start it.
-2. In the workbook, open the `main` sheet and find cells `V5` (port) and `V6`
-   (password). Type the same port and password there.
-3. Keep PLAXIS Input open while you press the SC3/SC4/SC5/SC6/SC9 buttons —
-   the generated notebook connects to that running session.
+Nothing runs until the PLAXIS remote scripting server is on. Follow
+`MANUAL.md` Section C.3 step by step (it has the annotated screenshot:
+**Expert → Configure remote scripting server…**, port `10000`, password,
+**Start server**). Then mirror the same port and password into the workbook's
+`main` sheet cells `V5` (port) and `V6` (password), and keep PLAXIS Input open
+while you press the SC3/SC4/SC5/SC6/SC9 buttons.
 
 Check: the port in `main!V5` matches the PLAXIS server port, and the password
 in `main!V6` matches. Mismatches are the single most common first-run failure
 (see `MANUAL.md` Section Q.3).
 
 > The API password is **not** your PLAXIS licence — it is the remote-scripting
-> password shown in PLAXIS when the API server is started.
+> password shown when the API server is started.
 
 ---
 
